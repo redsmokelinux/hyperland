@@ -82,3 +82,5 @@ cd fira-code-nerd
 sudo unzip ~/FiraCode.zip
 
 cd ..
+
+printf "\e[1;32mDone! Now if you didn't encountered any error you can reboot.\e[0m"
