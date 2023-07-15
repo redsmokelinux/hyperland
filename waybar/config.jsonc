@@ -210,7 +210,7 @@
     "disk": {
         "interval": 30,
         "format": "{free}G ",
-        "path": "/mnt/workspaces"
+        "path": "/mnt/d8d323ef-d4ce-4cea-9e02-56767623795d"
         
     }, 
     // "disk1": {
