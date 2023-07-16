@@ -1,7 +1,10 @@
 
 # Hyprland Setup
 
-sudo zypper in gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel Mesa-libGLESv3-devel "pkgconfig(xcb-errors)" hwdata libliftoff-devel libdisplay-info-devel -y
+# sudo zypper in gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel Mesa-libGLESv3-devel "pkgconfig(xcb-errors)" hwdata libliftoff-devel libdisplay-info-devel 
+
+sudo zypper -n install jq libdbusmenu-gtk3-devel libdbusmenu-gtk3-4 sndio sndio-devel Catch2-devel cmake spdlog-devel libpulse-devel libevdev-devel libmpdclient-devel wireplumber-devel wireplumber upower libupower-glib-devel hwdata libliftoff-devel libdisplay-info-devel Mesa-libGLESv3-devel
+
 
 
 git clone --recursive https://github.com/hyprwm/Hyprland 
@@ -46,26 +49,27 @@ ln -sf $HOME/Desktop/hyprland/hypr $HOME/.config/hypr
 
 ln -sf $HOME/Desktop/hyprland/waybar $HOME/.config/waybar
 
+cd 
 
 #General Setup
 
-sudo zypper in firefox gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim polkit-gnome NetworkManager-applet blueman mpvpaper protonvpn -y
+sudo zypper -n in firefox gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim polkit-gnome NetworkManager-applet blueman mpvpaper protonvpn 
 
 
 # Brave-Beta
 
-sudo zypper install curl -y
-sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc -y
-sudo zypper addrepo https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo -y
-sudo zypper install brave-browser-beta -y
+sudo zypper install curl 
+sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc 
+sudo zypper addrepo https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo 
+sudo zypper install brave-browser-beta 
 
 
 #VS Code
 
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc -y
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc 
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/zypp/repos.d/vscode.repo'
-sudo zypper refresh -y
-sudo zypper install code -y
+sudo zypper refresh 
+sudo zypper install code 
 
 
 #Font-Awesome
