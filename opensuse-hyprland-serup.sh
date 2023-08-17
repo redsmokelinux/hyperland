@@ -1,7 +1,7 @@
 
 # Hyprland Setup
 
-# sudo zypper in gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel Mesa-libGLESv3-devel "pkgconfig(xcb-errors)" hwdata libliftoff-devel libdisplay-info-devel 
+sudo zypper -n in gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel Mesa-libGLESv3-devel "pkgconfig(xcb-errors)" hwdata libliftoff-devel libdisplay-info-devel 
 
 sudo zypper -n install jq libdbusmenu-gtk3-devel libdbusmenu-gtk3-4 sndio sndio-devel Catch2-devel cmake spdlog-devel libpulse-devel libevdev-devel libmpdclient-devel wireplumber-devel wireplumber upower libupower-glib-devel hwdata libliftoff-devel libdisplay-info-devel Mesa-libGLESv3-devel
 
@@ -71,6 +71,43 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 sudo zypper refresh 
 sudo zypper install code 
 
+#Virt-Manager Setup
+
+sudo zypper -n in libvirtd libguestfs virt-manager qemu virt-viewer dnsmasq vde2 bridge-utils netcat-openbsd
+
+sudo usermod -aG libvirt $USER
+
+
+#ZSH Setup
+
+sudo zypper -n in zsh wget curl dejavu-fonts meslo-lg-fonts
+sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+omz update #update ohmyzsh shell
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting #syntax Highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions #ZSH autosuggestion
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/custom}/themes/powerlevel10k #ZSH Powerlevel10k Theme
+git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull #update zsh powerlevel10k theme
+
+mkdir $HOME/fonts
+
+cd $HOME/fonts
+
+wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Bold%20Italic.ttf
+wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Bold.ttf
+wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Italic.ttf
+wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Regular.ttf
+
+sudo mv *.ttf /usr/share/fonts
+cd && rm -rf fonts
+
+# #NIX Package Manager Setup
+
+# sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
+# #Nix Proton VPN
+# nix-env -iA nixpkgs.protonvpn-cli
 
 #Font-Awesome
 # wget https://use.fontawesome.com/releases/v6.1.2/fontawesome-free-6.1.2-desktop.zip
