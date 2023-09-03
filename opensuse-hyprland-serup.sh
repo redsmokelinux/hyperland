@@ -1,21 +1,22 @@
 
 # Hyprland Setup
 
-sudo zypper -n in gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel Mesa-libGLESv3-devel "pkgconfig(xcb-errors)" hwdata libliftoff-devel libdisplay-info-devel 
+# sudo zypper -n in gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel Mesa-libGLESv3-devel "pkgconfig(xcb-errors)" hwdata libliftoff-devel libdisplay-info-devel 
 
-sudo zypper -n install jq libdbusmenu-gtk3-devel libdbusmenu-gtk3-4 sndio sndio-devel Catch2-devel cmake spdlog-devel libpulse-devel libevdev-devel libmpdclient-devel wireplumber-devel wireplumber upower libupower-glib-devel hwdata libliftoff-devel libdisplay-info-devel Mesa-libGLESv3-devel
+# sudo zypper -n install jq libdbusmenu-gtk3-devel libdbusmenu-gtk3-4 sndio sndio-devel Catch2-devel cmake spdlog-devel libpulse-devel libevdev-devel libmpdclient-devel wireplumber-devel wireplumber upower libupower-glib-devel hwdata libliftoff-devel libdisplay-info-devel Mesa-libGLESv3-devel
 
 
 
-git clone --recursive https://github.com/hyprwm/Hyprland 
+# git clone --recursive https://github.com/hyprwm/Hyprland 
 
-cd $HOME/Hyprland
-meson setup build
-ninja -C build
-sudo ninja -C build install 
+# cd $HOME/Hyprland
+# meson setup build
+# ninja -C build
+# sudo ninja -C build install 
 
-cd
+# cd
 
+sudo zypper in hyprland
 
 #Waybar Setup
 
@@ -49,11 +50,13 @@ ln -sf $HOME/Desktop/hyprland/hypr $HOME/.config/hypr
 
 ln -sf $HOME/Desktop/hyprland/waybar $HOME/.config/waybar
 
+ln -sf $HOME/Desktop/hyprland/kitty $HOME/.config/kitty
+
 cd 
 
 #General Setup
 
-sudo zypper -n in firefox gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim polkit-gnome NetworkManager-applet blueman mpvpaper protonvpn 
+sudo zypper -n in firefox gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim polkit-gnome NetworkManager-applet blueman mpvpaper protonvpn gtk2-engine-murrine
 
 
 # Brave-Beta
@@ -80,7 +83,7 @@ sudo usermod -aG libvirt $USER
 
 #ZSH Setup
 
-sudo zypper -n in zsh wget curl dejavu-fonts meslo-lg-fonts
+sudo zypper -n in zsh wget curl dejavu-fonts
 sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 omz update #update ohmyzsh shell
 
@@ -122,6 +125,20 @@ sudo mkdir fira-code-nerd
 cd fira-code-nerd
 sudo unzip ~/FiraCode.zip
 
-cd ..
+#SUDO Setup in opensuse
+
+sudo /usr/sbin/visudo
+
+# %wheel        ALL=(ALL)       ALL
+sudo /usr/sbin/usermod -aG wheel $USER
+#Defaults targetpw    # ask for the password of the target user i.e. root
+#ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!
+sudo /usr/sbin/visudo
+sudo cp /usr/share/polkit-1/rules.d/50-default.rules /etc/polkit-1/rules.d/40-wheel.rules
+sudo vi /etc/polkit-1/rules.d/40-wheel.rules
+# return ["unix-group:wheel"];
+sudo chmod +r /etc/polkit-1/rules.d/40-wheel.rules
+
+cd 
 
 printf "\e[1;32mDone! Now if you didn't encountered any error you can reboot.\e[0m"
