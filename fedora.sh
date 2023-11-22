@@ -108,7 +108,7 @@ cd $HOME/hyprland
 #sudo touch blacklist-nouveau.conf
 #echo 'blacklist nouveau' >> blacklist-nouveau.conf
 #echo 'options nouveau modeset=0' >> blacklist-nouveau.conf
-sudo mv blacklist-nouveau.conf /etc/modprobe.d/
+sudo cp blacklist-nouveau.conf /etc/modprobe.d/
 
 cd $HOME
 
