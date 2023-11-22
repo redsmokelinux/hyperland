@@ -1,66 +1,57 @@
-
-
-
 {
-    "editor.fontFamily": "Fira Code",
-    // "editor.fontFamily": " 'Fira Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', 'FiraMono Nerd Font'",
+  "editor.fontFamily": "Fira Mono",
+  // "editor.fontFamily": " 'Fira Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', 'FiraMono Nerd Font'",
 
-    // "editor.fontFamily": " 'Iosevka' ",
-    
+  // "editor.fontFamily": " 'Iosevka' ",
 
-    "editor.fontSize": 18,
-    "editor.fontWeight":"560",
-    
-  
-    "settingsSync.ignoredSettings": [
+  "editor.fontSize": 18,
+  "editor.fontWeight": "560",
 
+  "settingsSync.ignoredSettings": [],
 
+  "workbench.colorCustomizations": {
+    "editor.background": "#0e0d0e",
+    // "editor.background": "#0a0e1f",
+    // "editor.background": "#0A0E14",
+    // "editor.background": "#ffffff",
+    "editor.foreground": "#ffffff",
+    "activityBar.background": "#0e0d0e",
+    "activityBar.foreground": "#ffffff",
+    "sideBar.background": "#0e0d0e",
+    "list.hoverBackground": "#41a6d9",
+    "sideBar.foreground": "#ffffff",
+    "terminal.selectionBackground": "#ff0000",
+    "terminal.foreground": "#ffffff",
+    "terminal.background": "#0e0d0e",
+    "terminalCursor.foreground": "#ffffff",
+    "tab.activeBackground": "#191919cc",
+    "tab.inactiveBackground": "#0e0d0e",
+    "panel.background": "#191919cc",
 
+    "statusBar.background": "#111",
+    "statusBar.foreground": "#ffffff",
+    "editorGroupHeader.tabsBackground": "#0e0d0e",
+    "titleBar.activeBackground": "#0e0d0e",
+    "titleBar.activeForeground": "#ffffff",
+    "menu.background": "#0e0d0e",
+    "menu.selectionBackground": "#191919cc",
+    "menubar.selectionBackground": "#191919cc",
+    "commandCenter.background": "#191919cc",
 
-
-
-  
-    
-  
-    ],
-  
-    "workbench.colorCustomizations": {
-      // "editor.background": "#080808",
-      // "editor.background": "#0a0e1f",
-      "editor.background": "#0A0E14",
-      // "editor.background": "#ffffff",
-      "editor.foreground": "#ffffff",
-      "activityBar.background": "#0A0E14",
-      "activityBar.foreground": "#ffffff",
-      "sideBar.background": "#0A0E14",
-      "list.hoverBackground": "#41a6d9",
-      "sideBar.foreground": "#ffffff",
-      "terminal.background": "#0A0E14",
-      "terminal.foreground": "#ffffff",
-      "terminalCursor.foreground": "#ffffff",
-  
-      // "editor.lineHighlightBorder": "#ff0000"
-      // "editor.lineHighlightBackground": "#ffffff"
-      "editorLineNumber.activeForeground": "#15c3cf",
-      "editorLineNumber.foreground": "#a7da1c"
-    },
-    "telemetry.telemetryLevel": "off",
-    "settingsSync.ignoredExtensions": [
-
-
-    
-
-
-
-  
-  
-    ],
-    "editor.wordWrap": "on",
-    "emmet.includeLanguages": {
-      "javascript": "javascriptreact"
-    },
-    "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.lineHighlightBorder": "#ff0000"
+    // "editor.lineHighlightBackground": "#ffffff"
+    "editorLineNumber.activeForeground": "#15c3cf",
+    "editorLineNumber.foreground": "#a7da1c"
+  },
+  "window.titleBarStyle": "custom",
+  "telemetry.telemetryLevel": "off",
+  "settingsSync.ignoredExtensions": [],
+  "editor.wordWrap": "on",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "window.zoomLevel": 1,
   "[javascriptreact]": {
@@ -71,14 +62,43 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[jsonc]": {
+  },
+  "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[css]": {
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"workbench.colorTheme": "Andromeda Italic Bordered",
-"workbench.iconTheme": "dobri-theme-icons",
-"editor.fontLigatures": true
-  }
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontLigatures": true,
+  "editor.mouseWheelZoom": true,
+  "workbench.settings.applyToAllProfiles": [],
+  "files.autoSave": "afterDelay",
+  "workbench.editor.showTabs": "multiple",
+  "editor.minimap.enabled": false,
+  "window.commandCenter": true,
+
+  "editor.indentSize": "tabSize",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emulator.emulatorPath": "$HOME/Android/sdk/emulator",
+  "cSpell.customDictionaries": {
+    "custom-dictionary-user": {
+      "name": "custom-dictionary-user",
+      "path": "~/.cspell/custom-dictionary-user.txt",
+      "addWords": true,
+      "scope": "user"
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontVariations": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Andromeda Bordered",
+  "typescript.updateImportsOnFileMove.enabled": "always"
+  // "workbench.colorTheme": "JellyFish"
+}
