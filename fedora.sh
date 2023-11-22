@@ -1,4 +1,3 @@
-
 sudo echo 'fastestmirror=true' >> /etc/dnf/dnf.conf
 sudo echo 'deltarpm=true' >> /etc/dnf/dnf.conf
 
@@ -83,7 +82,6 @@ cd
 #ProtonVPN
 
 
-
 #Font-Awesome
 # wget https://use.fontawesome.com/releases/v6.1.2/fontawesome-free-6.1.2-desktop.zip
 wget https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-desktop.zip
@@ -98,5 +96,23 @@ cd fira-code-nerd
 sudo unzip ~/FiraCode.zip
 
 cd 
+
+#Disable Nouveau Driver
+
+cd $HOME/hyprland
+# chmod +x disable-nouveau-driver.sh
+
+#Disabling Nouveau Driver
+#sudo touch blacklist-nouveau.conf
+#echo 'blacklist nouveau' >> blacklist-nouveau.conf
+#echo 'options nouveau modeset=0' >> blacklist-nouveau.conf
+sudo mv blacklist-nouveau.conf /etc/modprobe.d/
+
+cd
+
+sudo dracut --force
+
+#Nvidia 
+sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda -y
 
 printf "\e[1;32mDone! Now if you didn't encountered any error you can reboot.\e[0m"
