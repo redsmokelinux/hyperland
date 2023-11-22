@@ -29,7 +29,7 @@ meson setup -Dexperimental=true -Dcava=disabled build
 ninja -C build 
 sudo ninja -C build install
 
-cd
+cd $HOME
 
 # Hyprland Config
 
@@ -75,9 +75,11 @@ sudo usermod -aG libvirt $USER
 
 #ZSH Setup
 
+cd $HOME/hyprland
+chmod +x zsh.sh
 $HOME/hyprland/./zsh.sh
 
-cd
+cd $HOME
 
 #ProtonVPN
 
@@ -108,7 +110,7 @@ cd $HOME/hyprland
 #echo 'options nouveau modeset=0' >> blacklist-nouveau.conf
 sudo mv blacklist-nouveau.conf /etc/modprobe.d/
 
-cd
+cd $HOME
 
 sudo dracut --force
 
