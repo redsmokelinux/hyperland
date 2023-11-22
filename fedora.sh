@@ -1,3 +1,7 @@
+
+sudo echo 'fastestmirror=true' >> /etc/dnf/dnf.conf
+sudo echo 'deltarpm=true' >> /etc/dnf/dnf.conf
+
 sudo dnf update -y && sudo dnf upgrade -y
 
 #RPM fusion
@@ -77,6 +81,7 @@ $HOME/hyprland/./zsh.sh
 cd
 
 #ProtonVPN
+
 
 
 #Font-Awesome
