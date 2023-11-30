@@ -1,7 +1,5 @@
 
 
-sudo zypper addrepo https://download.opensuse.org/repositories/X11:Wayland/openSUSE_Tumbleweed/X11:Wayland.repo | echo 'a' && \
-
 # Hyprland Setup
 
  sudo zypper -n in gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel Mesa-libGLESv3-devel "pkgconfig(xcb-errors)" hwdata libliftoff-devel libdisplay-info-devel 
@@ -46,9 +44,11 @@ cd
 
 mkdir bin
 
-cp $HOME/hyprland $HOME/bin/ -r
+cp $HOME/hyprland/hypr $HOME/bin/ -r
+cp $HOME/hyprland/waybar $HOME/bin/ -r
+cp $HOME/hyprland/kitty $HOME/bin/ -r
 
-cd $HOME/Desktop/hyprland
+cd $HOME/bin
 
 ln -sf $HOME/bin/hypr $HOME/.config/hypr
 
@@ -60,7 +60,7 @@ cd
 
 #General Setup
 
-sudo zypper -n in firefox gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim polkit-gnome NetworkManager-applet blueman mpvpaper protonvpn gtk2-engine-murrine
+sudo zypper -n in firefox gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim polkit-gnome NetworkManager-applet blueman mpvpaper protonvpn gtk2-engine-murrine pipewire pipewire-pulseaudio
 
 
 # Brave-Beta
@@ -137,20 +137,20 @@ sudo mkdir fira-code-nerd
 cd fira-code-nerd
 sudo unzip ~/FiraCode.zip
 
-#SUDO Setup in opensuse
+cd $HOME
 
-sudo /usr/sbin/visudo
+#Disable Nouveau Driver
 
-# %wheel        ALL=(ALL)       ALL
-sudo /usr/sbin/usermod -a -G wheel $USER
-#Defaults targetpw    # ask for the password of the target user i.e. root
-#ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!
-sudo /usr/sbin/visudo
-sudo cp /usr/share/polkit-1/rules.d/50-default.rules /etc/polkit-1/rules.d/50-default.rules
-sudo vi /etc/polkit-1/rules.d/50-default.rules
-# return ["unix-group:wheel"];
-sudo chmod +r /etc/polkit-1/rules.d/50-default.rules
+#cd $HOME/hyprland
+# chmod +x disable-nouveau-driver.sh
 
-cd 
+#Disabling Nouveau Driver
+#sudo touch blacklist-nouveau.conf
+#echo 'blacklist nouveau' >> blacklist-nouveau.conf
+#echo 'options nouveau modeset=0' >> blacklist-nouveau.conf
+sudo cp blacklist-nouveau-opensuse.conf /etc/modprobe.d/blacklist-nouveau.conf
+sudo /sbin/mkinitrd
+
+
 
 printf "\e[1;32mDone! Now if you didn't encountered any error you can reboot.\e[0m"
