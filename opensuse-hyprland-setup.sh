@@ -44,17 +44,17 @@ cd
 
 # Hyprland Config
 
-mkdir Desktop
+mkdir bin
 
-cp $HOME/hyprland $HOME/Desktop/ -r
+cp $HOME/hyprland $HOME/bin/ -r
 
 cd $HOME/Desktop/hyprland
 
-ln -sf $HOME/Desktop/hyprland/hypr $HOME/.config/hypr
+ln -sf $HOME/bin/hypr $HOME/.config/hypr
 
-ln -sf $HOME/Desktop/hyprland/waybar $HOME/.config/waybar
+ln -sf $HOME/bin/waybar $HOME/.config/waybar
 
-ln -sf $HOME/Desktop/hyprland/kitty $HOME/.config/kitty
+ln -sf $HOME/bin/kitty $HOME/.config/kitty
 
 cd 
 
@@ -88,7 +88,15 @@ sudo usermod -aG libvirt $USER
 #ZSH Setup
 
 sudo zypper -n in zsh wget curl dejavu-fonts
-sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+cd $HOME
+git clone https://github.com/ohmyzsh/ohmyzsh.git
+cd $HOME/ohmyzsh/tools/
+chmod +x install.sh
+bash install.sh
+
+cd $HOME
+
 omz update #update ohmyzsh shell
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting #syntax Highlighting
@@ -97,17 +105,17 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/custom}/themes/powerlevel10k #ZSH Powerlevel10k Theme
 git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull #update zsh powerlevel10k theme
 
-mkdir $HOME/fonts
+mkdir $HOME/meslo-fonts
 
-cd $HOME/fonts
+cd $HOME/meslo-fonts
 
 wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Bold%20Italic.ttf
 wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Bold.ttf
 wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Italic.ttf
 wget https://github.com/romkatv/powerlevel10k-media/blob/master/MesloLGS%20NF%20Regular.ttf
 
-sudo mv *.ttf /usr/share/fonts
-cd && rm -rf fonts
+sudo mv meslo-fonts /usr/share/fonts
+cd $HOME
 
 # #NIX Package Manager Setup
 
@@ -120,7 +128,7 @@ cd && rm -rf fonts
 # wget https://use.fontawesome.com/releases/v6.1.2/fontawesome-free-6.1.2-desktop.zip
 wget https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-desktop.zip
 
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FiraCode.zip
 
 cd /usr/share/fonts
 sudo unzip ~/fontawesome-free-5.15.4-desktop.zip
@@ -134,14 +142,14 @@ sudo unzip ~/FiraCode.zip
 sudo /usr/sbin/visudo
 
 # %wheel        ALL=(ALL)       ALL
-sudo /usr/sbin/usermod -aG wheel $USER
+sudo /usr/sbin/usermod -a -G wheel $USER
 #Defaults targetpw    # ask for the password of the target user i.e. root
 #ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!
 sudo /usr/sbin/visudo
-sudo cp /usr/share/polkit-1/rules.d/50-default.rules /etc/polkit-1/rules.d/40-wheel.rules
-sudo vi /etc/polkit-1/rules.d/40-wheel.rules
+sudo cp /usr/share/polkit-1/rules.d/50-default.rules /etc/polkit-1/rules.d/50-default.rules
+sudo vi /etc/polkit-1/rules.d/50-default.rules
 # return ["unix-group:wheel"];
-sudo chmod +r /etc/polkit-1/rules.d/40-wheel.rules
+sudo chmod +r /etc/polkit-1/rules.d/50-default.rules
 
 cd 
 
