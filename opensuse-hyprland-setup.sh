@@ -1,4 +1,6 @@
-
+sudo zypper -n up && \
+sudo zypper addrepo https://download.opensuse.org/repositories/X11:Wayland/openSUSE_Tumbleweed/X11:Wayland.repo | echo 'a' && \
+sudo zypper -n refresh && \
 
 # Hyprland Setup
 
@@ -43,6 +45,7 @@ cd
 # Hyprland Config
 
 mkdir bin
+
 
 cp $HOME/hyprland/hypr $HOME/bin/ -r
 cp $HOME/hyprland/waybar $HOME/bin/ -r
@@ -151,6 +154,23 @@ cd $HOME
 sudo cp blacklist-nouveau-opensuse.conf /etc/modprobe.d/blacklist-nouveau.conf
 sudo /sbin/mkinitrd
 
+#SUDO Setup in opensuse
+
+sudo /usr/sbin/visudo
+
+# %wheel        ALL=(ALL)       ALL
+sudo /usr/sbin/usermod -aG wheel $USER
+#Defaults targetpw    # ask for the password of the target user i.e. root
+#ALL ALL=(ALL) ALL # WARNING! Only use this together with 'Defaults targetpw'!
+sudo /usr/sbin/visudo
+sudo cp /usr/share/polkit-1/rules.d/50-default.rules /etc/polkit-1/rules.d/40-wheel.rules
+echo "return ["unix-group:wheel"];"
+sleep 2
+sudo vi /etc/polkit-1/rules.d/40-wheel.rules
+# return ["unix-group:wheel"];
+sudo chmod +r /etc/polkit-1/rules.d/40-wheel.rules
+
+cd 
 
 
 printf "\e[1;32mDone! Now if you didn't encountered any error you can reboot.\e[0m"
