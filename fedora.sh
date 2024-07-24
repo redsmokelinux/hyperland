@@ -8,7 +8,7 @@ sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-releas
 
 # Hyprland Setup
 
-sudo dnf install hyprland hyprland-devel waybar -y
+sudo dnf install hyprland hyprland-devel waybar wofi -y
 
 sudo dnf install gcc-c++ git meson cmake "pkgconfig(cairo)" "pkgconfig(egl)" "pkgconfig(gbm)" "pkgconfig(gl)" "pkgconfig(glesv2)" "pkgconfig(libdrm)" "pkgconfig(libinput)" "pkgconfig(libseat)" "pkgconfig(libudev)" "pkgconfig(pango)" "pkgconfig(pangocairo)" "pkgconfig(pixman-1)" "pkgconfig(vulkan)" "pkgconfig(wayland-client)" "pkgconfig(wayland-protocols)" "pkgconfig(wayland-scanner)" "pkgconfig(wayland-server)" "pkgconfig(xcb)" "pkgconfig(xcb-icccm)" "pkgconfig(xcb-renderutil)" "pkgconfig(xkbcommon)" "pkgconfig(xwayland)" glslang-devel -y
 
@@ -19,17 +19,17 @@ sudo dnf install -y @c-development  git-core glibc-langpack-en meson scdoc  'pkg
 
 cd $HOME
 
-git clone https://github.com/Alexays/Waybar.git
+#git clone https://github.com/Alexays/Waybar.git
 
-cd $HOME/Waybar
+#cd $HOME/Waybar
 
-sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
+#sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
 # meson --prefix=/usr --buildtype=plain --auto-features=enabled --wrap-mode=nodownload build
-meson setup -Dexperimental=true -Dcava=disabled build
-ninja -C build 
-sudo ninja -C build install
+#meson setup -Dexperimental=true -Dcava=disabled build
+#ninja -C build 
+#sudo ninja -C build install
 
-cd $HOME
+#cd $HOME
 
 # Hyprland Config
 
@@ -37,6 +37,8 @@ mkdir bin
 
 cp $HOME/hyprland/hypr $HOME/bin/ -r
 cp $HOME/hyprland/waybar $HOME/bin/ -r
+cp $HOME/hyprland/kitty $HOME/bin/ -r
+cp $HOME/hyprland/wofi $HOME/bin/ -r
 
 cd $HOME/bin/
 
@@ -46,11 +48,14 @@ ln -sf $HOME/bin/waybar $HOME/.config/waybar
 
 ln -sf $HOME/bin/kitty $HOME/.config/kitty
 
+ln -sf $HOME/bin/wofi $HOME/.config/wofi
+
+
 cd 
 
 #General Setup
 
-sudo dnf install firefox gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim NetworkManager-tui blueman pipewire pirewire-devel wireplumber-devel pipewire-pulseaudio polkit-gnome mozilla-fira-mono-fonts network-manager-applet
+sudo dnf install firefox wireguard-tools gnome-disk-utility kitty brightnessctl papirus-icon-theme unar unzip tar nemo neovim NetworkManager-tui blueman pipewire pirewire-devel wireplumber-devel pipewire-pulseaudio polkit-gnome mozilla-fira-mono-fonts network-manager-applet
 
 # Brave-Beta
 
@@ -88,7 +93,7 @@ cd $HOME
 # wget https://use.fontawesome.com/releases/v6.1.2/fontawesome-free-6.1.2-desktop.zip
 wget https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-desktop.zip
 
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FiraCode.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
 
 cd /usr/share/fonts
 sudo unzip ~/fontawesome-free-5.15.4-desktop.zip
