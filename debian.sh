@@ -27,9 +27,9 @@ ln -sf $HOME/bin/wofi $HOME/.config/wofi
 
 cd 
 
-sudo apt install firefox-esr wireguard-tools gnome-disk-utility network-manager papirus-icon-theme unar unzip tar nemo file-roller neovim blueman pipewire wireplumber policykit-1-gnome -y
+sudo apt install wget firefox-esr wireguard-tools gnome-disk-utility network-manager papirus-icon-theme unar unzip tar nemo file-roller neovim blueman pipewire wireplumber policykit-1-gnome -y
 
-sudo apt install gcc build-essential linux-headers-$(uname -r)
+sudo apt install gcc build-essential linux-headers-$(uname -r) -y
 
 cd
 
@@ -59,4 +59,25 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-beta-archive-keyring.gpg]
 sudo apt update -y
 
 sudo apt install brave-browser-beta -y
+
+cd
+
+#VSCode
+
+sudo apt-get install wget gpg -y
+
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+rm -f packages.microsoft.gpg
+
+sudo apt install apt-transport-https -y
+
+sudo apt update -y
+
+sudo apt install code -y 
+
+cd
 
