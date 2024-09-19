@@ -27,7 +27,9 @@ ln -sf $HOME/bin/wofi $HOME/.config/wofi
 
 cd 
 
-sudo apt install firefox-esr wireguard-tools gnome-disk-utility network-manager papirus-icon-theme unar unzip tar nemo file-roller neovim blueman pipewire wireplumber policykit-1-gnome 
+sudo apt install firefox-esr wireguard-tools gnome-disk-utility network-manager papirus-icon-theme unar unzip tar nemo file-roller neovim blueman pipewire wireplumber policykit-1-gnome -y
+
+sudo apt install gcc build-essential linux-headers-$(uname -r)
 
 cd
 
