@@ -1,0 +1,11 @@
+
+configuration {
+ modi: "window,drun,ssh,combi,filebrowser";
+ font: "FiraCode Nerd Font 18";
+ combi-modi: "window,drun,ssh";
+ icon-theme: "Papirus";
+ show-icons: true;
+ 
+ }
+
+@theme "everforest"
